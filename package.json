@@ -4,7 +4,9 @@
   "description": "",
   "main": "out/index.js",
   "scripts": {
-    "prepare": "tsc"
+    "prepare": "tsc",
+    "build": "tsc",
+    "start": "tsc-watch"
   },
   "keywords": [],
   "author": "algasami",
@@ -15,6 +17,7 @@
     "dotenv": "^16.4.5",
     "hashids": "^2.3.0",
     "ts-expose-internals": "5.2.2",
+    "tsc-watch": "^6.2.0",
     "typescript": "^5.5.4",
     "uuid": "^10.0.0"
   },

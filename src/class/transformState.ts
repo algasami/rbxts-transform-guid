@@ -25,19 +25,25 @@ export class TransformState {
 	public readonly identifierMacros = new Map<ts.Symbol, IdentifierMacro>();
 
 	public readonly typeChecker: ts.TypeChecker;
-	public readonly options = this.program.getCompilerOptions();
-	public readonly srcDir = this.options.rootDir ?? this.program.getCurrentDirectory();
-	public readonly baseDir = this.options.baseUrl ?? this.options.configFilePath ?? this.program.getCurrentDirectory();
-	public readonly tsconfigFile = this.options.configFilePath ?? this.program.getCurrentDirectory();
+	public readonly program: ts.Program;
+	public readonly options: ts.CompilerOptions;
+	public readonly srcDir: string;
+	public readonly baseDir:string;
+	public readonly tsconfigFile:string;
 	public readonly symbolProvider: SymbolProvider;
 	public readonly guidProvider: GUIDProvider;
 
 	public constructor(
-		public readonly program: ts.Program,
-		public readonly context: ts.TransformationContext,
-		public readonly config: TransformConfiguration,
-		public readonly logger: LoggerProvider
+		program: ts.Program,
+		public context: ts.TransformationContext,
+		public config: TransformConfiguration,
+		public logger: LoggerProvider
 	) {
+		this.program = program;
+		this.options =  this.program.getCompilerOptions()
+		this.srcDir=  this.options.rootDir ?? this.program.getCurrentDirectory();
+		this.baseDir   = this.options.baseUrl ?? this.options.configFilePath ?? this.program.getCurrentDirectory();
+		this.tsconfigFile=  this.options.configFilePath ?? this.program.getCurrentDirectory()
 		this.typeChecker = program.getTypeChecker();
 		this.symbolProvider = new SymbolProvider(this);
 		this.guidProvider = new GUIDProvider(this);

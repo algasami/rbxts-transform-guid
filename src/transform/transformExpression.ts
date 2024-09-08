@@ -3,7 +3,6 @@ import { TransformState } from "../class/transformState";
 import { transformBinaryExpression } from "./expressions/transformBinaryExpression";
 import { transformCallExpression } from "./expressions/transformCallExpression";
 import { transformIdentifier } from "./expressions/transformIdentifier";
-import { transformPropertyAccessExpression } from "./expressions/transformPropertyAccessExpression";
 import { transformNode } from "./transformNode";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
